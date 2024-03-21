@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import VHeroBlock from './components/VHeroBlock.vue'
+import VDetails from './components/VDetails.vue'
 </script>
 
 <template>
@@ -33,6 +34,10 @@ import VHeroBlock from './components/VHeroBlock.vue'
       </div>
     </div>
   </div>
+  <div class="flex justify-center pau-background-2">
+    <img src="./assets/images/disco.png" alt="disco" class="pau-disco-img" />
+  </div>
+  <VDetails />
 </template>
 
 <style scoped>
@@ -63,6 +68,10 @@ import VHeroBlock from './components/VHeroBlock.vue'
   align-self: center;
 }
 
+.pau-disco-img {
+  height: 550px;
+}
+
 @media (max-width: 1230px) {
   .pau-text {
     font-size: 25px;
@@ -72,6 +81,12 @@ import VHeroBlock from './components/VHeroBlock.vue'
 @media (max-width: 1100px) {
   .pau-text {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .pau-disco-img {
+    height: 450px;
   }
 }
 
@@ -89,6 +104,12 @@ import VHeroBlock from './components/VHeroBlock.vue'
   }
 }
 
+@media (max-width: 800px) {
+  .pau-disco-img {
+    height: 350px;
+  }
+}
+
 @media (max-width: 550px) {
   .px-20 {
     padding-left: 2rem;
@@ -100,6 +121,12 @@ import VHeroBlock from './components/VHeroBlock.vue'
 
   .m-12 {
     margin: 1rem;
+  }
+}
+
+@media (max-width: 530px) {
+  .pau-disco-img {
+    height: 250px;
   }
 }
 </style>
