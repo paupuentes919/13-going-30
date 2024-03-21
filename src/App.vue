@@ -1,72 +1,105 @@
 <script setup lang="ts">
 import VHeroBlock from './components/VHeroBlock.vue'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <VHeroBlock />
+  <div class="pau-background py-36 px-20">
+    <div class="pau-background-2 p-3">
+      <div class="flex justify-center">
+        <img src="./assets/images/aboutus.png" alt="about us" class="pau-about-us-font" />
+      </div>
+      <div class="pau-img-text m-12 gap-x-8">
+        <img src="./assets/images/poisepau.png" alt="poise pau" class="pau-poise-pau-img" />
+        <div class="pau-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </div>
+      </div>
+      <div class="pau-img-text m-12 gap-x-8">
+        <img src="./assets/images/poiseduli.png" alt="poise duli" class="pau-poise-pau-img" />
+        <div class="pau-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.pau-background {
+  background-image: url(./assets/images/13going30wallpaper.jpg);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.pau-background-2 {
+  background-color: rgb(242, 237, 237);
+  border-radius: 8px;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.pau-about-us-font {
+  height: 100px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.pau-poise-pau-img {
+  height: 400px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.pau-img-text {
+  display: flex;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.pau-text {
+  font-family: 'Outfit';
+  font-size: 28px;
+  align-self: center;
 }
 
-nav a:first-of-type {
-  border: 0;
+@media (max-width: 1230px) {
+  .pau-text {
+    font-size: 25px;
+  }
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@media (max-width: 1100px) {
+  .pau-text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 920px) {
+  .pau-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 850px) {
+  .pau-img-text {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .px-20 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .pau-about-us-font {
+    height: 70px;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .m-12 {
+    margin: 1rem;
   }
 }
 </style>
