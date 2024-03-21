@@ -47,5 +47,6 @@ export default {
 
 .pau-text {
   color: #881c56;
+  font-weight: 600;
 }
 </style>
