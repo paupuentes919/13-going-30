@@ -5,7 +5,7 @@
         <div
           class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl"
         >
-          <img src="../assets/images/13Going30.png" alt="13 going 30" />
+          <img src="../assets/images/13Going30.png" alt="13 going 30" class="pau-img-13-30" />
         </div>
         <p
           class="max-w-2xl mb-6 font-light text-gray-500 mt-8 lg:mb-8 md:text-lg lg:text-xl font-bold pau-text"
@@ -43,10 +43,18 @@ export default {
 
 .pau-img-height {
   height: 400px;
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.pau-img-13-30 {
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
+  height: 300px;
 }
 
 .pau-text {
   color: #881c56;
   font-weight: 600;
+  font-family: 'Outfit';
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
 }
 </style>
