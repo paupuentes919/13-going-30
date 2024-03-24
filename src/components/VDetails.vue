@@ -8,24 +8,24 @@
           class="pau-margin-negative"
         />
       </div>
-      <div class="pau-border-details pau-background-pattern p-12">
-        <div class="flex gap-x-16">
-          <div class="self-center mb-12">
-            <img src="../assets/images/Agenda.png" alt="agenda" class="img-events" />
+      <div class="pau-border-details pau-background-pattern p-12 pau-margin-up">
+        <div class="flex items-center gap-x-8 mb-8">
+          <div class="w-24 flex-shrink-0">
+            <img src="../assets/images/Agenda.png" alt="agenda" class="w-full" />
           </div>
-          <div class="self-center pau-text-details">Viernes 4 de Octubre</div>
+          <div class="pau-text-details">Viernes 4 de Octubre</div>
         </div>
-        <div class="flex gap-x-16">
-          <div class="self-center mb-12">
-            <img src="../assets/images/clock.png" alt="clock" class="img-events" />
+        <div class="flex items-center gap-x-8 mb-8">
+          <div class="w-24 flex-shrink-0">
+            <img src="../assets/images/clock.png" alt="clock" class="w-full" />
           </div>
-          <div class="self-center pau-text-details">21 horas</div>
+          <div class="pau-text-details">21 horas</div>
         </div>
-        <div class="flex gap-x-16">
-          <div class="self-center mb-12">
-            <img src="../assets/images/house.png" alt="house" class="img-events" />
+        <div class="flex items-center gap-x-8 mb-8">
+          <div class="w-24 flex-shrink-0">
+            <img src="../assets/images/house.png" alt="house" class="w-full" />
           </div>
-          <div class="self-center pau-text-details">Av. Avellaneda 1851 - sum</div>
+          <div class="pau-text-details">Av. Avellaneda 1851 - sum</div>
         </div>
       </div>
     </div>
@@ -57,6 +57,7 @@
   font-family: 'Graduate';
   font-size: 55px;
   color: #881c56;
+  font-weight: 600;
 }
 
 .img-events {
@@ -111,6 +112,12 @@
   }
 }
 
+@media (max-width: 658px) {
+  .w-24 {
+    width: 4rem;
+  }
+}
+
 @media (max-width: 600px) {
   .pau-text-details {
     font-size: 20px;
@@ -120,6 +127,10 @@
 @media (max-width: 530px) {
   .pau-margin-negative {
     height: 50px;
+  }
+
+  .pau-margin-up {
+    margin-top: -60px;
   }
 }
 
@@ -133,8 +144,11 @@
   .img-events {
     display: none;
   }
-  .gap-x-16 {
-    gap: 0;
+  .gap-x-8 {
+    gap: 1.5rem;
+  }
+  .w-24 {
+    width: 2.8rem;
   }
 }
 </style>
