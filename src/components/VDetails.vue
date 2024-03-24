@@ -8,7 +8,7 @@
           class="pau-margin-negative"
         />
       </div>
-      <div class="pau-border-details pau-background-pattern p-12 pau-margin-up">
+      <div class="pau-border-details pau-background-pattern p-12 pau-margin-up mb-24">
         <div class="flex items-center gap-x-8 mb-8">
           <div class="w-24 flex-shrink-0">
             <img src="../assets/images/Agenda.png" alt="agenda" class="w-full" />
@@ -42,7 +42,7 @@
   background-repeat: no-repeat;
 }
 .pau-background-event {
-  background-color: rgb(242, 237, 237);
+  background-color: #d5c5d5;
 }
 .pau-border-details {
   border: 15px solid pink;
@@ -51,6 +51,7 @@
 
 .pau-margin-negative {
   margin-top: -100px;
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
 }
 
 .pau-text-details {

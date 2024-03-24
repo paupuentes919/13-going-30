@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VHeroBlock from './components/VHeroBlock.vue'
 import VDetails from './components/VDetails.vue'
+import VForm from './components/VForm.vue'
 </script>
 
 <template>
@@ -34,10 +35,11 @@ import VDetails from './components/VDetails.vue'
       </div>
     </div>
   </div>
-  <div class="flex justify-center pau-background-2">
+  <div class="flex justify-center pau-background-3">
     <img src="./assets/images/disco.png" alt="disco" class="pau-disco-img" />
   </div>
   <VDetails />
+  <VForm />
 </template>
 
 <style scoped>
@@ -48,6 +50,12 @@ import VDetails from './components/VDetails.vue'
 .pau-background-2 {
   background-color: rgb(242, 237, 237);
   border-radius: 8px;
+}
+
+.pau-background-3 {
+  background-image: url(./assets/images/discofloor.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .pau-about-us-font {
@@ -70,6 +78,7 @@ import VDetails from './components/VDetails.vue'
 
 .pau-disco-img {
   height: 550px;
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
 }
 
 @media (max-width: 1230px) {
