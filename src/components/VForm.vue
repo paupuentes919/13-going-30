@@ -17,6 +17,10 @@
       </div>
       <form>
         <!-- <form action="#" method="post"> -->
+        <div class="relative">
+          <img src="../assets/images/cinta.png" alt="cinta" class="pau-cinta" />
+          <div class="pau-position-up">Nombre y Apellido</div>
+        </div>
         <div class="flex justify-center pb-12 self-center">
           <div class="flex self-end">
             <img src="../assets/images/dulileft.png" alt="duli left" class="pau-pau-right" />
@@ -98,6 +102,18 @@ const clearError = (): void => {
 .pau-border-lines {
   border: 10px double #0fe9d9;
   background-color: rgb(242, 237, 237);
+}
+
+.pau-cinta {
+  width: 400px;
+}
+
+.pau-position-up {
+  font-family: 'Graduate';
+  font-size: 25px;
+  position: absolute;
+  left: 2rem;
+  bottom: 3.5rem;
 }
 
 .pau-text-form {
@@ -298,6 +314,11 @@ const clearError = (): void => {
   .pau-exclusive-friend {
     font-size: 10px;
   }
+
+  .pau-position-up {
+    bottom: 2.9rem;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 350px) {
@@ -309,6 +330,9 @@ const clearError = (): void => {
 @media (max-width: 300px) {
   .pau-pau-right {
     display: none;
+  }
+  .pau-position-up {
+    bottom: 2rem;
   }
 }
 </style>
