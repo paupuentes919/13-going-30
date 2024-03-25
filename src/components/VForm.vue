@@ -7,20 +7,97 @@
       <div class="flex justify-center">
         <img src="../assets/images/pen.png" alt="pen" class="pau-img-pen" />
       </div>
+      <div class="pau-girls-text mb-12">
+        <div class="flex justify-center px-3">
+          Paula Puentes: [panicked and confused] Wait, listen to me. I'm 13!
+        </div>
+        <div class="flex justify-center px-3">
+          Daniela Mesa: Paula, if you're gonna start lying about your age, I'd go with 27.
+        </div>
+      </div>
+      <form>
+        <!-- <form action="#" method="post"> -->
+        <div class="flex justify-center pb-12 self-center">
+          <div class="flex self-end">
+            <img src="../assets/images/dulileft.png" alt="duli left" class="pau-pau-right" />
+          </div>
+          <div class="pau-borders-card">
+            <div class="pau-card-form">HI, I AM:</div>
+            <div class="flex justify-center mt-3">
+              <img
+                src="../assets/images/arrows.png"
+                alt="arrows"
+                height="100px"
+                class="pau-width-150"
+              />
+            </div>
+            <div class="flex justify-center pt-3 pb-3">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name and surname"
+                v-model="name"
+                class="pau-input-form-name"
+                :class="{ 'border-red-500': !nombreValido }"
+                @input="clearError"
+              />
+            </div>
+            <span v-if="!nombreValido" class="mensaje-error"
+              >El nombre y apellido son obligatorios</span
+            >
+            <div class="flex justify-center">
+              <div class="pau-exclusive-friend pb-12">... Exclusive friend of Pau and Duli ...</div>
+            </div>
+            <div class="pau-pink-divider"></div>
+          </div>
+          <div class="flex self-end">
+            <img src="../assets/images/pauright.png" alt="pau right" class="pau-pau-right" />
+          </div>
+        </div>
+        <button @click="submitForm">Enviar</button>
+      </form>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const name = ref('')
+const nombreValido = ref(true)
+const submitForm = (event: Event): void => {
+  event.preventDefault() // Prevenir el comportamiento por defecto del formulario
+
+  if (name.value.trim() === '') {
+    nombreValido.value = false
+  } else {
+    console.log('Formulario enviado')
+    // Aquí puedes enviar el formulario o realizar cualquier acción deseada
+  }
+}
+
+const clearError = (): void => {
+  if (name.value.trim() !== '') {
+    nombreValido.value = true
+  }
+}
+</script>
 
 <style scoped>
 .pau-background-form {
-  background-color: rgb(242, 237, 237);
-  padding: 3rem;
+  background-image: url(../assets/images/razzles.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
 }
 
 .pau-border-lines {
-  border: 3px double lightblue;
+  border: 10px double #0fe9d9;
+  background-color: rgb(242, 237, 237);
 }
 
 .pau-text-form {
@@ -32,5 +109,206 @@
   transform: rotate(90deg);
   margin-top: -90px;
   height: 200px;
+}
+
+.pau-girls-text {
+  margin-top: -2.5rem;
+  color: #c003ff;
+  font-family: 'Outfit';
+}
+
+.pau-borders-card {
+  border: 3px solid #111211;
+  max-width: 26rem;
+  border-radius: 8px;
+}
+
+.pau-card-form {
+  background-color: #f6014c;
+  font-family: 'Just Another Hand';
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  padding: 0.5rem;
+}
+
+.pau-input-form-name {
+  width: 23rem;
+  padding: 1rem;
+  font-family: 'Cedarville Cursive';
+  background-color: rgb(213, 205, 205);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pau-exclusive-friend {
+  font-family: 'Cedarville Cursive';
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pau-pink-divider {
+  height: 20px;
+  background-color: #f6014c;
+}
+
+.mensaje-error {
+  color: red;
+  font-size: 15px;
+  padding-left: 1rem;
+  font-family: 'Outfit';
+}
+
+.pau-pau-right {
+  height: 300px;
+}
+
+.border-red-500 {
+  border: 3px solid red;
+}
+
+.pau-width-150 {
+  width: 150px;
+}
+
+@media (max-width: 1255px) {
+  .pau-pau-right {
+    height: 250px;
+  }
+}
+
+@media (max-width: 1190px) {
+  .pau-pau-right {
+    height: 200px;
+  }
+
+  .pau-background-form {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+@media (max-width: 975px) {
+  .pau-background-form {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+}
+
+@media (max-width: 865px) {
+  .pau-background-form {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .pau-background-form {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .pau-borders-card {
+    max-width: 20rem;
+  }
+
+  .pau-background-form {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .pau-background-form {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pau-background-form {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .pau-borders-card {
+    max-width: 17rem;
+  }
+
+  .pau-input-form-name {
+    width: 17rem;
+    font-size: 18px;
+  }
+
+  .pau-exclusive-friend {
+    font-size: 14px;
+  }
+
+  .pau-pau-right {
+    height: 180px;
+  }
+
+  .pau-card-form {
+    font-size: 30px;
+  }
+
+  .pau-width-150 {
+    width: 100px;
+  }
+}
+
+@media (max-width: 530px) {
+  .pau-pau-right {
+    height: 150px;
+  }
+}
+
+@media (max-width: 490px) {
+  .pau-pau-right {
+    height: 100px;
+  }
+
+  .pau-card-form {
+    font-size: 25px;
+  }
+
+  .pau-width-150 {
+    width: 70px;
+  }
+}
+
+@media (max-width: 425px) {
+  .pau-card-form {
+    font-size: 20px;
+  }
+  .pau-width-150 {
+    width: 50px;
+  }
+  .pau-borders-card {
+    max-width: 13rem;
+  }
+  .pau-input-form-name {
+    width: 13rem;
+    font-size: 13px;
+  }
+
+  .pau-exclusive-friend {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .pau-pau-right {
+    height: 50px;
+  }
+}
+
+@media (max-width: 300px) {
+  .pau-pau-right {
+    display: none;
+  }
 }
 </style>
