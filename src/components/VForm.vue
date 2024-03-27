@@ -21,6 +21,9 @@
           <img src="../assets/images/cinta.png" alt="cinta" class="pau-cinta" />
           <div class="pau-position-up">Nombre y Apellido</div>
         </div>
+        <div class="pau-form-text-description">
+          <span style="color: red">*</span> Ingrese su nombre y apellido
+        </div>
         <div class="flex justify-center pb-12 self-center">
           <div class="flex self-end">
             <img src="../assets/images/dulileft.png" alt="duli left" class="pau-pau-right" />
@@ -59,6 +62,31 @@
             <img src="../assets/images/pauright.png" alt="pau right" class="pau-pau-right" />
           </div>
         </div>
+        <div class="relative">
+          <img src="../assets/images/cinta.png" alt="cinta" class="pau-cinta" />
+          <div class="pau-position-up">Email</div>
+        </div>
+        <div class="pau-form-text-description">
+          <span style="color: red">*</span> Ingrese su email
+        </div>
+        <div class="flex justify-center pb-12 self-center">
+          <div class="relative">
+            <img src="../assets/images/newemail.jpg" alt="new email" class="pau-new-email" />
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              v-model="email"
+              class="pau-email-input"
+              :class="{ 'border-red-500': !emailValido }"
+              @input="clearError"
+            />
+            <span v-if="!emailValido" class="mensaje-error pau-position-error">{{
+              emailError
+            }}</span>
+          </div>
+        </div>
         <button @click="submitForm">Enviar</button>
       </form>
     </div>
@@ -69,12 +97,24 @@
 import { ref } from 'vue'
 
 const name = ref('')
+const email = ref('')
+const emailError = ref('')
 const nombreValido = ref(true)
+const emailValido = ref(true)
+
 const submitForm = (event: Event): void => {
   event.preventDefault() // Prevenir el comportamiento por defecto del formulario
 
   if (name.value.trim() === '') {
     nombreValido.value = false
+  }
+  if (email.value.trim() === '') {
+    emailValido.value = false
+    emailError.value = 'El email es obligatorio'
+  }
+  if ((!email.value.includes('@') || !email.value.includes('.com')) && email.value.trim() !== '') {
+    emailValido.value = false
+    emailError.value = 'Por favor, ingrese un email válido.'
   } else {
     console.log('Formulario enviado')
     // Aquí puedes enviar el formulario o realizar cualquier acción deseada
@@ -84,6 +124,9 @@ const submitForm = (event: Event): void => {
 const clearError = (): void => {
   if (name.value.trim() !== '') {
     nombreValido.value = true
+  }
+  if (email.value.trim() !== '') {
+    emailValido.value = true
   }
 }
 </script>
@@ -114,6 +157,14 @@ const clearError = (): void => {
   position: absolute;
   left: 2rem;
   bottom: 3.5rem;
+}
+
+.pau-form-text-description {
+  font-family: 'Outfit';
+  padding-left: 2rem;
+  padding-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .pau-text-form {
@@ -186,6 +237,28 @@ const clearError = (): void => {
 
 .pau-width-150 {
   width: 150px;
+}
+
+.pau-new-email {
+  width: 23rem;
+}
+
+.pau-email-input {
+  position: absolute;
+  height: 4.1rem;
+  width: 20rem;
+  top: 5.3rem;
+  left: 1.3rem;
+  font-family: 'Cedarville Cursive';
+  font-size: 22px;
+  font-weight: 900;
+  padding: 1rem;
+}
+
+.pau-position-error {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.2rem;
 }
 
 @media (max-width: 1255px) {
@@ -293,6 +366,19 @@ const clearError = (): void => {
 
   .pau-width-150 {
     width: 70px;
+  }
+
+  .pau-new-email {
+    width: 17rem;
+  }
+
+  .pau-email-input {
+    font-size: 18px;
+    top: 3rem;
+    width: 15rem;
+  }
+  .pau-position-error {
+    top: 7rem;
   }
 }
 
