@@ -87,6 +87,31 @@
             }}</span>
           </div>
         </div>
+        <div class="relative">
+          <img src="../assets/images/cinta.png" alt="cinta" class="pau-cinta" />
+          <div class="pau-position-up">DNI</div>
+        </div>
+        <div class="pau-form-text-description">
+          <span style="color: red">*</span> Ingrese su dni
+        </div>
+        <div class="flex justify-center pb-12 self-center">
+          <div class="relative">
+            <img src="../assets/images/mask.png" alt="sleep mask" class="pau-mask" />
+            <input
+              type="number"
+              name="dni"
+              id="dni"
+              placeholder="Enter your dni"
+              v-model="dni"
+              class="pau-dni-input"
+              :class="{ 'border-red-500': !dniValido }"
+              @input="clearError"
+            />
+            <span v-if="!dniValido" class="mensaje-error pau-position-error-dni">{{
+              dniError
+            }}</span>
+          </div>
+        </div>
         <button @click="submitForm">Enviar</button>
       </form>
     </div>
@@ -98,9 +123,12 @@ import { ref } from 'vue'
 
 const name = ref('')
 const email = ref('')
+const dni = ref('')
 const emailError = ref('')
+const dniError = ref('')
 const nombreValido = ref(true)
 const emailValido = ref(true)
+const dniValido = ref(true)
 
 const submitForm = (event: Event): void => {
   event.preventDefault() // Prevenir el comportamiento por defecto del formulario
@@ -114,8 +142,17 @@ const submitForm = (event: Event): void => {
   }
   if ((!email.value.includes('@') || !email.value.includes('.com')) && email.value.trim() !== '') {
     emailValido.value = false
-    emailError.value = 'Por favor, ingrese un email válido.'
-  } else {
+    emailError.value = 'Por favor, ingrese un email válido'
+  }
+  if (dni.value === '') {
+    dniValido.value = false
+    dniError.value = 'El dni es obligatorio'
+  }
+  if (dni.value.length !== 8 && dni.value.length !== 0) {
+    dniValido.value = false
+    dniError.value = 'Por favor, ingrese un dni válido'
+  }
+  if (nombreValido.value && emailValido.value && dniValido.value) {
     console.log('Formulario enviado')
     // Aquí puedes enviar el formulario o realizar cualquier acción deseada
   }
@@ -127,6 +164,9 @@ const clearError = (): void => {
   }
   if (email.value.trim() !== '') {
     emailValido.value = true
+  }
+  if (dni.value !== '') {
+    dniValido.value = true
   }
 }
 </script>
@@ -223,7 +263,7 @@ const clearError = (): void => {
 .mensaje-error {
   color: red;
   font-size: 15px;
-  padding-left: 1rem;
+  margin-left: 1rem;
   font-family: 'Outfit';
 }
 
@@ -243,6 +283,10 @@ const clearError = (): void => {
   width: 23rem;
 }
 
+.pau-mask {
+  width: 25rem;
+}
+
 .pau-email-input {
   position: absolute;
   height: 4.1rem;
@@ -255,10 +299,29 @@ const clearError = (): void => {
   padding: 1rem;
 }
 
+.pau-dni-input {
+  position: absolute;
+  height: 4.1rem;
+  width: 20rem;
+  top: 5.3rem;
+  left: 3.2rem;
+  font-family: 'Cedarville Cursive';
+  font-size: 22px;
+  font-weight: 900;
+  padding: 1rem;
+}
+
 .pau-position-error {
   position: absolute;
   bottom: 0.5rem;
   left: 0.2rem;
+}
+
+.pau-position-error-dni {
+  position: absolute;
+  bottom: 4.5rem;
+  left: 2.2rem;
+  background: rgb(255, 255, 255);
 }
 
 @media (max-width: 1255px) {
@@ -380,6 +443,23 @@ const clearError = (): void => {
   .pau-position-error {
     top: 7rem;
   }
+
+  .pau-width-150 {
+    width: 70px;
+  }
+
+  .pau-mask {
+    width: 17rem;
+  }
+
+  .pau-dni-input {
+    font-size: 18px;
+    top: 3rem;
+    width: 12rem;
+  }
+  .pau-position-error-dni {
+    bottom: 1.8rem;
+  }
 }
 
 @media (max-width: 425px) {
@@ -410,6 +490,36 @@ const clearError = (): void => {
 @media (max-width: 350px) {
   .pau-pau-right {
     height: 50px;
+  }
+
+  .pau-new-email {
+    width: 15rem;
+  }
+
+  .pau-email-input {
+    font-size: 13px;
+    top: 3rem;
+    width: 13rem;
+    height: 3.3rem;
+  }
+  .pau-position-error {
+    top: 6.1rem;
+  }
+
+  .pau-mask {
+    width: 15rem;
+  }
+
+  .pau-dni-input {
+    font-size: 13px;
+    top: 3rem;
+    left: 2.2rem;
+    width: 11rem;
+    height: 3.3rem;
+  }
+  .pau-position-error-dni {
+    bottom: 1.4rem;
+    left: 1.3rem;
   }
 }
 
