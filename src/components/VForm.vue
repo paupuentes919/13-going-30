@@ -165,7 +165,7 @@
 </template>
 
 <script setup lang="ts">
-import { firestore } from '../firebase.ts'
+import { firestore } from '../firebase'
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
 import Swal from 'sweetalert2'
 import { ref } from 'vue'
