@@ -138,11 +138,23 @@
                 name="comments"
                 id="comments"
                 placeholder="Enter your comments here"
+                v-model="comments"
                 class="pau-comments-input"
                 @input="clearError"
               ></textarea>
             </div>
           </div>
+        </div>
+        <div class="flex justify-center pb-3 self-center pau-info-text">
+          Si todos tus datos son correctos, luego de apretar el boton "Enviar", se abrirá un pop-up
+          con más detalles
+        </div>
+        <div
+          v-if="!emailValido || !dniValido || !nombreValido"
+          class="flex justify-center p-3"
+          style="color: red; font-family: 'Outfit'; font-size: 20px"
+        >
+          Por favor, verifique sus datos ya que hay errores
         </div>
         <div class="flex justify-end p-8">
           <button @click="submitForm" type="submit" class="pau-button-form">Enviar</button>
@@ -153,18 +165,22 @@
 </template>
 
 <script setup lang="ts">
+import { firebaseApp, firestore } from '../firebase.js'
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
+import Swal from 'sweetalert2'
 import { ref } from 'vue'
 
 const name = ref('')
 const email = ref('')
 const dni = ref('')
+const comments = ref('')
 const emailError = ref('')
 const dniError = ref('')
 const nombreValido = ref(true)
 const emailValido = ref(true)
 const dniValido = ref(true)
 
-const submitForm = (event: Event): void => {
+const submitForm = async (event: Event): Promise<void> => {
   event.preventDefault() // Prevenir el comportamiento por defecto del formulario
 
   if (name.value.trim() === '') {
@@ -182,16 +198,55 @@ const submitForm = (event: Event): void => {
     dniValido.value = false
     dniError.value = 'El dni es obligatorio'
   }
-  if (dni.value.length !== 8 && dni.value.length !== 0) {
+  if (dni.value.toString().length !== 8 && dni.value !== '') {
     dniValido.value = false
     dniError.value = 'Por favor, ingrese un dni válido'
   }
   if (nombreValido.value && emailValido.value && dniValido.value) {
-    console.log('Formulario enviado')
-    // Aquí puedes enviar el formulario o realizar cualquier acción deseada
+    try {
+      const formData = {
+        comments: comments.value.trim(),
+        dni: dni.value,
+        email: email.value.trim(),
+        name: name.value.trim()
+      }
+
+      // Realiza una consulta a Firestore para buscar el DNI
+      const querySnapshot = await getDocs(
+        query(collection(firestore, 'Invitados'), where('dni', '==', dni.value))
+      )
+      // Verifica si la consulta devuelve algún resultado
+      if (!querySnapshot.empty) {
+        Swal.fire({
+          title: `¡${name.value.trim()}, ya te anotaste!`,
+          text: `Validamos los datos y ya te encuentras en nuestra lista de invitados`,
+          icon: 'warning',
+          confirmButtonText: 'Volver al inicio'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/'
+          }
+        })
+      } else {
+        // Mando a Firebase
+        const docRef = await addDoc(collection(firestore, 'Invitados'), formData)
+        console.log('Formulario enviado a Firebase con ID: ', docRef.id)
+        Swal.fire({
+          title: `¡Muchas gracias por anotarte, ${name.value.trim()}!`,
+          text: `Te hemos enviado un correo electrónico a ${email.value.trim()} con más detalles.`,
+          icon: 'success',
+          confirmButtonText: 'Volver al inicio'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/'
+          }
+        })
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario a Firebase: ', error)
+    }
   }
 }
-
 const clearError = (): void => {
   if (name.value.trim() !== '') {
     nombreValido.value = true
@@ -389,6 +444,13 @@ const clearError = (): void => {
   background-color: #0592e1;
   border: 3px solid #111211;
   border-radius: 8px;
+}
+
+.pau-info-text {
+  font-family: 'Outfit';
+  font-size: 15px;
+  font-weight: 600;
+  padding: 1rem;
 }
 
 @media (max-width: 1255px) {
