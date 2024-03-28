@@ -112,7 +112,41 @@
             }}</span>
           </div>
         </div>
-        <button @click="submitForm">Enviar</button>
+        <div class="relative">
+          <img src="../assets/images/cinta.png" alt="cinta" class="pau-cinta" />
+          <div class="pau-position-up">Comentarios</div>
+        </div>
+        <div class="pau-form-text-description">
+          Avisanos si consideras que tenemos que saber alguna restricción alimenticia, por ejemplo:
+          alergias, intolerancias, no consumo ciertos alimentos, etc.
+        </div>
+        <div class="flex justify-center pb-12 self-center">
+          <div class="relative pau-wd-background">
+            <img
+              src="../assets/images/wishingdustelements.png"
+              alt="wishing dust elements"
+              class="pau-wd-elements"
+            />
+            <img
+              src="../assets/images/wishingdustfont.png"
+              alt="wishing dust font"
+              class="pau-wd-font"
+            />
+            <div class="flex justify-center pb-12">
+              <textarea
+                type="text"
+                name="comments"
+                id="comments"
+                placeholder="Enter your comments here"
+                class="pau-comments-input"
+                @input="clearError"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-end p-8">
+          <button @click="submitForm" type="submit" class="pau-button-form">Enviar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -244,7 +278,6 @@ const clearError = (): void => {
   width: 23rem;
   padding: 1rem;
   font-family: 'Cedarville Cursive';
-  background-color: rgb(213, 205, 205);
   font-size: 22px;
   font-weight: 900;
 }
@@ -322,6 +355,40 @@ const clearError = (): void => {
   bottom: 4.5rem;
   left: 2.2rem;
   background: rgb(255, 255, 255);
+}
+
+.pau-wd-background {
+  background-color: #f6522f;
+}
+
+.pau-wd-elements,
+.pau-wd-font {
+  width: 22rem;
+  height: 10rem;
+  padding-bottom: 1.5rem;
+}
+
+.pau-comments-input {
+  width: 20rem;
+  height: 8rem;
+  padding: 1rem;
+  font-size: 20px;
+  font-family: 'Cedarville Cursive';
+  font-weight: 900;
+}
+
+.pau-button-form {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 25px;
+  font-family: 'Graduate';
+  font-weight: 600;
+  color: white;
+  background-color: #0592e1;
+  border: 3px solid #111211;
+  border-radius: 8px;
 }
 
 @media (max-width: 1255px) {
@@ -460,6 +527,26 @@ const clearError = (): void => {
   .pau-position-error-dni {
     bottom: 1.8rem;
   }
+
+  .pau-wd-elements,
+  .pau-wd-font {
+    width: 17rem;
+    height: 7rem;
+  }
+
+  .pau-comments-input {
+    width: 15rem;
+    padding: 1rem;
+    font-size: 18px;
+  }
+
+  .pau-button-form {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 425px) {
@@ -520,6 +607,18 @@ const clearError = (): void => {
   .pau-position-error-dni {
     bottom: 1.4rem;
     left: 1.3rem;
+  }
+
+  .pau-wd-elements,
+  .pau-wd-font {
+    width: 15rem;
+    height: 6rem;
+  }
+
+  .pau-comments-input {
+    width: 13rem;
+    padding: 1rem;
+    font-size: 13px;
   }
 }
 
