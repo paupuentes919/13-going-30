@@ -198,10 +198,7 @@ const submitForm = async (event: Event): Promise<void> => {
     dniValido.value = false
     dniError.value = 'El dni es obligatorio'
   }
-  if (
-    (dni.value.toString().length !== 8 || dni.value.toString().length !== 7) &&
-    dni.value !== ''
-  ) {
+  if ((dni.value.toString().length < 7 || dni.value.toString().length > 8) && dni.value !== '') {
     dniValido.value = false
     dniError.value = 'Por favor, ingrese un dni válido'
   }
