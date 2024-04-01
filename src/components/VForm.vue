@@ -166,6 +166,7 @@
 
 <script setup lang="ts">
 import { firestore } from '../firebase'
+import emailjs from 'emailjs-com'
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
 import Swal from 'sweetalert2'
 import { ref } from 'vue'
@@ -228,6 +229,12 @@ const submitForm = async (event: Event): Promise<void> => {
           }
         })
       } else {
+        // Envia mail a cumplepauyduli2024@gmail.com
+        sendEmail()
+
+        // Envia mail al usuario con mas data
+        sendEmailUser()
+
         // Mando a Firebase
         const docRef = await addDoc(collection(firestore, 'Invitados'), formData)
         console.log('Formulario enviado a Firebase con ID: ', docRef.id)
@@ -256,6 +263,49 @@ const clearError = (): void => {
   }
   if (dni.value !== '') {
     dniValido.value = true
+  }
+}
+
+const sendEmail = async () => {
+  try {
+    const templateParams = {
+      to_email: 'cumplepauyduli2024@gmail.com',
+      from_email: email.value.trim(),
+      from_name: name.value.trim(),
+      subject: 'Nuevo invitado: ' + name.value.trim()
+    }
+
+    const response = await emailjs.send(
+      'service_k69emhy', // Aquí debes proporcionar tu Service ID de EmailJS
+      'template_qd7grwo', // Aquí debes proporcionar tu Template ID de EmailJS
+      templateParams,
+      'erEPHi7VRNfaN2lfQ'
+    )
+
+    console.log('Correo electrónico enviado:', response)
+  } catch (error) {
+    console.error('Error al enviar el correo electrónico:', error)
+  }
+}
+
+const sendEmailUser = async () => {
+  try {
+    const templateParams = {
+      from_email: 'cumplepauyduli2024@gmail.com',
+      to_email: email.value.trim(),
+      to_name: name.value.trim()
+    }
+
+    const response = await emailjs.send(
+      'service_k69emhy', // Aquí debes proporcionar tu Service ID de EmailJS
+      'template_1gh8snt', // Aquí debes proporcionar tu Template ID de EmailJS
+      templateParams,
+      'erEPHi7VRNfaN2lfQ'
+    )
+
+    console.log('Correo electrónico enviado:', response)
+  } catch (error) {
+    console.error('Error al enviar el correo electrónico:', error)
   }
 }
 </script>
