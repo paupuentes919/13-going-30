@@ -170,7 +170,7 @@ import emailjs from 'emailjs-com'
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
 import Swal from 'sweetalert2'
 import { ref } from 'vue'
-
+console.log('this is a codeql test')
 const name = ref('')
 const email = ref('')
 const dni = ref('')
