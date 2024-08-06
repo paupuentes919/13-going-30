@@ -12,7 +12,7 @@
           Paula Puentes: [panicked and confused] Wait, listen to me. I'm 13!
         </div>
         <div class="flex justify-center px-3">
-          Daniela Mesa: Paula, if you're gonna start lying about your age, I'd go with 27.
+          Mike: Paula, if you're gonna start lying about your age, I'd go with 27.
         </div>
       </div>
       <form>
@@ -26,7 +26,7 @@
         </div>
         <div class="flex justify-center pb-12 self-center">
           <div class="flex self-end">
-            <img src="../assets/images/dulileft.png" alt="duli left" class="pau-pau-right" />
+            <img src="../assets/images/mike.png" alt="duli left" class="pau-pau-right" />
           </div>
           <div class="pau-borders-card">
             <div class="pau-card-form">HI, I AM:</div>
@@ -54,7 +54,7 @@
               >El nombre y apellido son obligatorios</span
             >
             <div class="flex justify-center">
-              <div class="pau-exclusive-friend pb-12">... Exclusive friend of Pau and Duli ...</div>
+              <div class="pau-exclusive-friend pb-12">... Exclusive friend of Pau ...</div>
             </div>
             <div class="pau-pink-divider"></div>
           </div>
@@ -157,6 +157,7 @@
           Por favor, verifique sus datos ya que hay errores
         </div>
         <div class="flex justify-end p-8">
+          <img src="../assets/images/alex.png" alt="alex" class="pau-width-150" />
           <button @click="submitForm" type="submit" class="pau-button-form">Enviar</button>
         </div>
       </form>

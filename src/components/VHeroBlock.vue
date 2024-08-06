@@ -5,7 +5,10 @@
         <div
           class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl"
         >
-          <img src="../assets/images/13Going30.png" alt="13 going 30" class="pau-img-13-30" />
+          <div class="flex">
+            <img src="../assets/images/13Going30.png" alt="13 going 30" class="pau-img-13-30" />
+            <img src="../assets/images/schwarzi.png" alt="13 going 30" class="pau-img-schwarzi" />
+          </div>
         </div>
         <p
           class="max-w-2xl mb-6 font-light text-gray-500 mt-8 lg:mb-8 md:text-lg lg:text-xl font-bold pau-text"
@@ -14,11 +17,7 @@
         </p>
       </div>
       <div class="lg:ml-24 lg:mt-0 lg:col-span-5 lg:flex">
-        <img
-          src="../assets/images/13going30-dulipau.png"
-          alt="duli and pau"
-          class="pau-img-height"
-        />
+        <img src="../assets/images/13going30-pau.png" alt="duli and pau" class="pau-img-height" />
       </div>
     </div>
   </section>
@@ -51,10 +50,30 @@ export default {
   height: 300px;
 }
 
+.pau-img-schwarzi {
+  -webkit-filter: drop-shadow(5px 5px 5px #666666);
+  margin-top: 9rem;
+  height: 200px;
+}
+
 .pau-text {
   color: #881c56;
   font-weight: 600;
   font-family: 'Outfit';
   -webkit-filter: drop-shadow(5px 5px 5px #666666);
+}
+
+@media (max-width: 580px) {
+  .pau-img-schwarzi {
+    margin-top: 12rem;
+    margin-left: -6rem;
+  }
+}
+
+@media (max-width: 465px) {
+  .pau-img-schwarzi {
+    margin-top: 12rem;
+    margin-left: -7rem;
+  }
 }
 </style>

@@ -14,15 +14,20 @@ import VForm from './components/VForm.vue'
       <div class="pau-img-text m-12 gap-x-8">
         <img src="./assets/images/poisepau.png" alt="poise pau" class="pau-poise-pau-img" />
         <div class="pau-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+          ¡Se viene una celebración épica! Nuestro protagonista está a punto de alcanzar un hito
+          increíble: ¡Los 30 años!
+          <br />
+          Ahora, está lista para despedirse de los 20 con estilo y abrazar la treintena con todas
+          sus fuerzas. 30 años de aventuras, risas, anécdotas inolvidables y una buena dosis de
+          aprendizaje (y algunos momentos de "¿por qué hice eso?"). <br />Con más sabiduría, estilo
+          y ese inconfundible sentido del humor, promete que los 30 serán aún más épicos que los 20.
+          <br />¡Prepárense para celebrar como nunca!
         </div>
       </div>
-      <div class="pau-img-text m-12 gap-x-8">
+      <div class="flex justify-center">
+        <img src="./assets/images/pau-ski.png" alt="pau ski" class="pau-ski-pau-img" />
+      </div>
+      <!-- <div class="pau-img-text m-12 gap-x-8">
         <img src="./assets/images/poiseduli.png" alt="poise duli" class="pau-poise-pau-img" />
         <div class="pau-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -32,7 +37,7 @@ import VForm from './components/VForm.vue'
           sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum.
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="flex justify-center pau-background-3">
@@ -64,6 +69,12 @@ import VForm from './components/VForm.vue'
 
 .pau-poise-pau-img {
   height: 400px;
+}
+
+.pau-ski-pau-img {
+  margin-top: -3rem;
+  margin-bottom: 1rem;
+  height: 300px;
 }
 
 .pau-img-text {

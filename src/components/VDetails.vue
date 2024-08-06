@@ -13,7 +13,7 @@
           <div class="w-24 flex-shrink-0">
             <img src="../assets/images/Agenda.png" alt="agenda" class="w-full" />
           </div>
-          <div class="pau-text-details">Viernes 4 de Octubre</div>
+          <div class="pau-text-details">Viernes 30 de Agosto</div>
         </div>
         <div class="flex items-center gap-x-8 mb-8">
           <div class="w-24 flex-shrink-0">
