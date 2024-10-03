@@ -145,6 +145,9 @@
             </div>
           </div>
         </div>
+        <div v-if="gifData" class="flex justify-center mt-12 mb-12">
+          <img :src="gifData[randomIndex].images.original.url" alt="GIF" />
+        </div>
         <div class="flex justify-center pb-3 self-center pau-info-text">
           Si todos tus datos son correctos, luego de apretar el boton "Enviar", se abrirá un pop-up
           con más detalles
@@ -166,12 +169,13 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 import { firestore } from '../firebase'
 import emailjs from 'emailjs-com'
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
 import Swal from 'sweetalert2'
-import { ref } from 'vue'
-console.log('this is a codeql test')
+import { ref, onMounted } from 'vue'
+
 const name = ref('')
 const email = ref('')
 const dni = ref('')
@@ -181,6 +185,22 @@ const dniError = ref('')
 const nombreValido = ref(true)
 const emailValido = ref(true)
 const dniValido = ref(true)
+
+const gifData = ref(null)
+const searchTerm = 'cats'
+const apiKey = 'uTX0XqWeoUNj4xLWphRlA6xWQwusPNlf'
+const limit = 10
+const randomIndex = Math.floor(Math.random() * limit)
+
+const fetchGifData = async () => {
+  const url = `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}&limit=${limit}`
+  try {
+    const response = await axios.get(url)
+    gifData.value = response.data.data
+  } catch (error) {
+    console.error('Error fetching Gif data:', error)
+  }
+}
 
 const submitForm = async (event: Event): Promise<void> => {
   event.preventDefault() // Prevenir el comportamiento por defecto del formulario
@@ -309,6 +329,10 @@ const sendEmailUser = async () => {
     console.error('Error al enviar el correo electrónico:', error)
   }
 }
+
+onMounted(() => {
+  fetchGifData()
+})
 </script>
 
 <style scoped>
