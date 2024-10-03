@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <div v-if="gifData" class="flex justify-center mt-12 mb-12">
+        <div v-if="gifData && gifData.length > 0" class="flex justify-center mt-12 mb-12">
           <img :src="gifData[randomIndex].images.original.url" alt="GIF" />
         </div>
         <div class="flex justify-center pb-3 self-center pau-info-text">
@@ -186,7 +186,7 @@ const nombreValido = ref(true)
 const emailValido = ref(true)
 const dniValido = ref(true)
 
-const gifData = ref(null)
+const gifData = ref<{ images: { original: { url: string } } }[]>([])
 const searchTerm = 'cats'
 const apiKey = 'uTX0XqWeoUNj4xLWphRlA6xWQwusPNlf'
 const limit = 10
